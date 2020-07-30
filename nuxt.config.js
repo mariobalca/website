@@ -29,6 +29,8 @@ export default {
   ** Global CSS
   */
   css: [
+    '~/assets/css/style.scss',
+    'remixicon/fonts/remixicon.css'
   ],
   /*
   ** Plugins to load before mounting the App
@@ -54,7 +56,11 @@ export default {
   modules: [
     // Doc: https://github.com/nuxt/content
     '@nuxt/content',
+    '@nuxtjs/gtm',
   ],
+  gtm: {
+    id: 'GTM-NWKH7DK'
+  },
   /*
   ** Content module configuration
   ** See https://content.nuxtjs.org/configuration
