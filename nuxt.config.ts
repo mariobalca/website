@@ -45,7 +45,7 @@ export default defineNuxtConfig({
     output: { dir: process.env.NUXT_OUTPUT_DIR || '.output' },
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/blog'],
+      routes: ['/', '/blog', '/rss.xml', '/sitemap.xml'],
       failOnError: true,
       // Linked from the header; each goes once its page exists.
       ignore: ['/about', '/mentorship'],
