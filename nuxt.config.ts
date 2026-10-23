@@ -1,6 +1,6 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-10-01',
-  modules: ['@nuxt/eslint', '@nuxt/fonts'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', './modules/redirects'],
   devtools: { enabled: true },
 
   css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/prose.css'],
