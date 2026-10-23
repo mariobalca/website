@@ -4,7 +4,7 @@ My personal website and blog. Posts come from Tamable through its read API. `doc
 
 ## Running it
 
-Node 24.15 or newer (`.nvmrc`).
+Node 22.22.3 or newer, or 24.15 or newer, the versions Nuxt 4.6 supports. CI uses 24 (`.nvmrc`); the server runs 22.
 
 ```bash
 cp .env.example .env   # add the Tamable read key
