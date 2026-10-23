@@ -11,7 +11,7 @@ A fast personal site and blog whose posts come from Tamable. I write, review and
 | Topic | Decision |
 |---|---|
 | Framework | Nuxt, current stable release, TypeScript |
-| Content | Posts and series from the Tamable read API. About and mentorship pages as Markdown in this repo |
+| Content | Posts and series from the Tamable read API. The about page lives in this repo |
 | Hosting | A new Laravel Forge server, shared with the Sparkling Opinions site. This site is a Forge Nuxt site with zero-downtime deploys |
 | Domain | `https://mariobalca.com` is canonical. `www.mariobalca.com` answers with a 301 to it |
 | Post URLs | `/blog/{slug}`. Old Ghost URLs `/{slug}/` answer with a 301 |
@@ -58,7 +58,7 @@ Nuxt reads `NUXT_*` variables into its server-only runtime config when the build
 | `/blog/{slug}` | `GET /posts/{slug}` | Prerendered for every post |
 | `/series` | `GET /series` | Only series with published posts |
 | `/series/{slug}` | `GET /series/{slug}` | Posts in order, with their numbers |
-| `/about`, `/mentorship` | Markdown in `content/` | Moved from Ghost |
+| `/about` | `app/pages/about.vue` | Moved from Ghost, verbatim apart from the dropped newsletter mention and a shorter Tamable sentence |
 | `/preview/{token}` | `GET /preview/{token}` | Server-rendered on each request, see Preview |
 | `/rss.xml` | Same data as `/blog` | Full content, newest 20 |
 | `/sitemap.xml` | Same data | Pages, posts and series, with `lastmod` from `updated_at` |
@@ -77,6 +77,7 @@ All are permanent (301). They are generated at build time, so a build is the onl
 | `/rss/` | `/rss.xml` | Ghost's feed URL, so feed readers follow |
 | `/tag/{tag}/` | `/blog` | Ghost tag archives. The site has no tag pages |
 | `/author/mariobalca/` | `/about` | Ghost author page |
+| `/mentorship` | `/about` | Mentorship sessions are no longer offered |
 | Every `{from, to}` in `GET /redirects` | its `to` | Posts renamed in Tamable |
 | An old slug the API answers with a `301` | the new `/blog/{slug}` | Safety net for a rename between two builds |
 
@@ -169,7 +170,7 @@ Each step that changes production waits for my OK.
    - `the-current-state-of-the-developer-job-market-q4-2024` (8 October 2024)
 
    Then review them in Tamable. The signup card inside the first one is dropped.
-3. Copy `/about` and `/mentorship` into `content/` as Markdown. Mentorship keeps its Calendly link and email.
+3. Move `/about` over from Ghost. The mentorship page is dropped and redirects to `/about`.
 4. In Tamable's Settings › Sites, set:
    - the blog URL pattern to `/blog/{slug}`
    - the preview URL pattern to `https://mariobalca.com/preview/{token}`

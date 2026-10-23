@@ -5,7 +5,6 @@ const links = [
   { label: 'blog', to: '/blog', sections: ['/blog', '/tags'] },
   { label: 'series', to: '/series', sections: ['/series'] },
   { label: 'about', to: '/about', sections: ['/about'] },
-  { label: 'mentorship', to: '/mentorship', sections: ['/mentorship'] },
 ]
 
 function isCurrent(sections: string[]) {
