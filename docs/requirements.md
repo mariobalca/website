@@ -1,6 +1,6 @@
 # mariobalca.com requirements
 
-What the new site does, how it is built and deployed, and how it replaces the Ghost site. Decisions marked open are still to settle.
+What the new site does, how it is built and deployed, and how it replaces the Ghost site.
 
 ## Goal
 
@@ -75,7 +75,7 @@ All are permanent (301). They are generated at build time, so a build is the onl
 | `https://www.mariobalca.com/*` | `https://mariobalca.com/*` | Canonical host, in nginx |
 | `/{slug}/` for each post | `/blog/{slug}` | Ghost's post URLs |
 | `/rss/` | `/rss.xml` | Ghost's feed URL, so feed readers follow |
-| `/tag/{tag}/` | `/blog` | Ghost tag archives (see Open questions) |
+| `/tag/{tag}/` | `/blog` | Ghost tag archives. The site has no tag pages |
 | `/author/mariobalca/` | `/about` | Ghost author page |
 | Every `{from, to}` in `GET /redirects` | its `to` | Posts renamed in Tamable |
 | An old slug the API answers with a `301` | the new `/blog/{slug}` | Safety net for a rename between two builds |
@@ -92,7 +92,7 @@ Trailing slashes are normalised to no slash. The read API's `301` also sends a `
 - **Headings** carry ids from Tamable, so posts get anchor links and, optionally, a table of contents.
 - **Links**: Tamable already serves own-site links without `target` or `rel`, and other sites with `target="_blank" rel="noopener"`.
 - **Cover image**: shown when set, with its `width` and `height` to avoid layout shift and its `description` as alt text.
-- **Meta**: date, reading time (computed from the HTML), tags, and the series with its number and links to the previous and next parts.
+- **Meta**: date, reading time (computed from the HTML), tags as plain labels, and the series with its number and links to the previous and next parts.
 
 ## SEO
 
@@ -225,13 +225,11 @@ The chosen direction becomes the site's tokens and components: type, colour, spa
 | tamable-app/tamable#76 | Headings carry ids | Open |
 | tamable-app/tamable#77 | The read API guide matches the code | Open |
 
-## Open questions
-
-- **Tag pages**: `/tags/{tag}` from `GET /posts?tag=`, or no tag pages and Ghost's tag URLs redirect to `/blog`? With two posts and two tags, I'd leave them out for now.
-- **Search**: Ghost had search. Leave it out at launch?
-- **Analytics**: none, or a privacy-friendly one such as Plausible or Umami?
-- **Images**: serve Tamable's images as they are, or resize them on our server (Nuxt Image with IPX)?
-
 ## Out of scope for now
 
-Newsletter and members, comments, search, multiple authors, and other languages.
+- Newsletter and members
+- Tag pages: tags show on posts as plain labels, and Ghost's `/tag/{tag}/` URLs redirect to `/blog`
+- Search
+- Analytics
+- Image resizing: images are served as Tamable stores them, with their `width` and `height` and `loading="lazy"` below the fold
+- Comments, multiple authors and other languages
