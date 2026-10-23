@@ -1,0 +1,21 @@
+{
+  "data": {
+    "id": "9f1c2a40-7c1e-4d7a-9b51-1b9f0e2f6a01",
+    "title": "Product-based companies vs service-based companies",
+    "slug": "product-based-companies-vs-service-based-companies",
+    "url": "https://mariobalca.com/blog/product-based-companies-vs-service-based-companies",
+    "excerpt": "My thoughts and experiences about working for both types of companies and why I prefer one compared to another.",
+    "cover": null,
+    "published_at": "2024-03-07T09:00:00+00:00",
+    "updated_at": "2024-09-17T11:14:06+00:00",
+    "series": null,
+    "seo": {
+      "title": "Product-based companies vs service-based companies",
+      "description": "My thoughts and experiences about working for both types of companies and why I prefer one compared to another.",
+      "canonical_url": "https://mariobalca.com/blog/product-based-companies-vs-service-based-companies"
+    },
+    "tags": ["Work"],
+    "html": "<blockquote><p>\"As a product builder, you're invested in the long-term success of your creation.\"</p></blockquote><p>The first thing that I want to clarify with this post is: customers buy products from you, and clients hire you for your services/expertise.</p><h2 id=\"building-and-iterating-products\">Building (and iterating) products</h2><p>Read <a href=\"https://mariobalca.com/blog/the-current-state-of-the-developer-job-market-q4-2024\">the job market post</a> or <a href=\"https://37signals.com\" target=\"_blank\" rel=\"noopener\">37signals</a>.</p><figure><img src=\"https://cdn.tamable.app/files/frame.png\" alt=\"A diagram\" width=\"1600\" height=\"900\"><figcaption>Hours per project</figcaption></figure><figure class=\"video\"><iframe src=\"https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ\" title=\"YouTube video\" allowfullscreen=\"\" loading=\"lazy\" data-src=\"https://youtu.be/dQw4w9WgXcQ\"></iframe></figure><blockquote class=\"twitter-tweet\"><a href=\"https://x.com/mariobalca/status/1\" target=\"_blank\" rel=\"noopener\">https://x.com/mariobalca/status/1</a></blockquote><a class=\"link-card\" href=\"https://tamable.app\" data-title=\"Tamable\" data-description=\"Your content back office\" data-image=\"https://tamable.app/og.png\" target=\"_blank\" rel=\"noopener\"><img src=\"https://tamable.app/og.png\" alt=\"\"><span class=\"link-card-title\">Tamable</span><span class=\"link-card-description\">Your content back office</span></a><pre><code class=\"language-js\">const a = 1</code></pre><table><tbody><tr><th><p>Kind</p></th><th><p>Hours</p></th></tr><tr><td><p>Product</p></td><td><p>40</p></td></tr></tbody></table>",
+    "content": null
+  }
+}

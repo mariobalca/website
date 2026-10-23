@@ -1,0 +1,40 @@
+{
+  "data": [
+    {
+      "id": "3b7d1c22-5a8e-4f0b-8c3d-2e6f9a1b7c02",
+      "title": "My perspective/experience about the current state of the developer job market (Q4 2024)",
+      "slug": "the-current-state-of-the-developer-job-market-q4-2024",
+      "url": "https://mariobalca.com/blog/the-current-state-of-the-developer-job-market-q4-2024",
+      "excerpt": "Most companies don't need that 1% of the very best talent available.",
+      "cover": null,
+      "published_at": "2024-10-08T09:00:00+00:00",
+      "updated_at": "2024-10-08T11:13:33+00:00",
+      "series": null,
+      "seo": {
+        "title": "My perspective/experience about the current state of the developer job market (Q4 2024)",
+        "description": "Most companies don't need that 1% of the very best talent available.",
+        "canonical_url": "https://mariobalca.com/blog/the-current-state-of-the-developer-job-market-q4-2024"
+      },
+      "tags": ["Job Market", "Work"]
+    },
+    {
+      "id": "9f1c2a40-7c1e-4d7a-9b51-1b9f0e2f6a01",
+      "title": "Product-based companies vs service-based companies",
+      "slug": "product-based-companies-vs-service-based-companies",
+      "url": "https://mariobalca.com/blog/product-based-companies-vs-service-based-companies",
+      "excerpt": "My thoughts and experiences about working for both types of companies and why I prefer one compared to another.",
+      "cover": null,
+      "published_at": "2024-03-07T09:00:00+00:00",
+      "updated_at": "2024-09-17T11:14:06+00:00",
+      "series": null,
+      "seo": {
+        "title": "Product-based companies vs service-based companies",
+        "description": "My thoughts and experiences about working for both types of companies and why I prefer one compared to another.",
+        "canonical_url": "https://mariobalca.com/blog/product-based-companies-vs-service-based-companies"
+      },
+      "tags": ["Work"]
+    }
+  ],
+  "links": { "first": "https://api.tamable.app/api/v1/posts?page=1", "last": "https://api.tamable.app/api/v1/posts?page=1", "prev": null, "next": null },
+  "meta": { "current_page": 1, "from": 1, "last_page": 1, "links": [], "path": "https://api.tamable.app/api/v1/posts", "per_page": 100, "to": 2, "total": 2 }
+}

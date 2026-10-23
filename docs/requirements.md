@@ -42,12 +42,12 @@ A fast personal site and blog whose posts come from Tamable. I write, review and
 
 | Variable | Used by |
 |---|---|
-| `TAMABLE_API_URL` | Build and preview route (`https://api.tamable.app/api/v1`) |
-| `TAMABLE_READ_KEY` | Build and preview route. Created in Tamable's Settings › Sites |
-| `TAMABLE_WEBHOOK_SECRET` | `/api/deploy`, to check the signature. Tamable's "Signing secret" |
-| `FORGE_DEPLOY_HOOK_URL` | `/api/deploy` and the nightly rebuild |
+| `NUXT_TAMABLE_API_URL` | Build and preview route (defaults to `https://api.tamable.app/api/v1`) |
+| `NUXT_TAMABLE_READ_KEY` | Build and preview route. Created in Tamable's Settings › Sites |
+| `NUXT_TAMABLE_WEBHOOK_SECRET` | `/api/deploy`, to check the signature. Tamable's "Signing secret" |
+| `NUXT_FORGE_DEPLOY_HOOK_URL` | `/api/deploy` and the nightly rebuild |
 
-They live in the Forge site's `.env`, which Forge shares across releases. CI never gets the read key. It builds against recorded fixtures.
+Nuxt reads `NUXT_*` variables into its server-only runtime config when the build prerenders and when the server starts, so none of them is baked into the build. They live in the Forge site's `.env`, which Forge shares across releases. CI never gets the read key. It builds against recorded fixtures.
 
 ## Routes
 
