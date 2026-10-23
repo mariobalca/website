@@ -41,6 +41,8 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    // Forge's deploy script builds into a fresh folder and swaps it in only when the build succeeded.
+    output: { dir: process.env.NUXT_OUTPUT_DIR || '.output' },
     prerender: {
       crawlLinks: true,
       routes: ['/', '/blog'],
