@@ -89,6 +89,7 @@ onMounted(() => {
     <!-- Tamable's HTML goes through its own schema and is served as published. -->
     <!-- eslint-disable-next-line vue/no-v-html -->
     <div ref="content" class="prose" v-html="p.html" />
+    <SeriesNav v-if="p.seriesNav" :nav="p.seriesNav" />
   </article>
 </template>
 

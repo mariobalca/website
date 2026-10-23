@@ -9,13 +9,20 @@
       "cover": null,
       "published_at": "2024-10-08T09:00:00+00:00",
       "updated_at": "2024-10-08T11:13:33+00:00",
-      "series": null,
+      "series": {
+        "slug": "building-tamable",
+        "title": "Building Tamable",
+        "number": 1
+      },
       "seo": {
         "title": "My perspective/experience about the current state of the developer job market (Q4 2024)",
         "description": "Most companies don't need that 1% of the very best talent available.",
         "canonical_url": "https://mariobalca.com/blog/the-current-state-of-the-developer-job-market-q4-2024"
       },
-      "tags": ["Job Market", "Work"]
+      "tags": [
+        "Job Market",
+        "Work"
+      ]
     },
     {
       "id": "9f1c2a40-7c1e-4d7a-9b51-1b9f0e2f6a01",
@@ -32,9 +39,25 @@
         "description": "My thoughts and experiences about working for both types of companies and why I prefer one compared to another.",
         "canonical_url": "https://mariobalca.com/blog/product-based-companies-vs-service-based-companies"
       },
-      "tags": ["Work"]
+      "tags": [
+        "Work"
+      ]
     }
   ],
-  "links": { "first": "https://api.tamable.app/api/v1/posts?page=1", "last": "https://api.tamable.app/api/v1/posts?page=1", "prev": null, "next": null },
-  "meta": { "current_page": 1, "from": 1, "last_page": 1, "links": [], "path": "https://api.tamable.app/api/v1/posts", "per_page": 100, "to": 2, "total": 2 }
+  "links": {
+    "first": "https://api.tamable.app/api/v1/posts?page=1",
+    "last": "https://api.tamable.app/api/v1/posts?page=1",
+    "prev": null,
+    "next": null
+  },
+  "meta": {
+    "current_page": 1,
+    "from": 1,
+    "last_page": 1,
+    "links": [],
+    "path": "https://api.tamable.app/api/v1/posts",
+    "per_page": 100,
+    "to": 2,
+    "total": 2
+  }
 }

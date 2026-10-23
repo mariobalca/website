@@ -1,11 +1,19 @@
-import type { Post, PostSummary, Tag } from '#shared/types/content'
+import type { PostPage, PostSummary, Series, SeriesSummary, Tag } from '#shared/types/content'
 
 export function usePosts() {
   return useFetch<PostSummary[]>('/api/content/posts', { key: 'posts', default: () => [] })
 }
 
 export function usePost(slug: string) {
-  return useFetch<Post>(`/api/content/posts/${encodeURIComponent(slug)}`, { key: `post:${slug}` })
+  return useFetch<PostPage>(`/api/content/posts/${encodeURIComponent(slug)}`, { key: `post:${slug}` })
+}
+
+export function useSeriesList() {
+  return useFetch<SeriesSummary[]>('/api/content/series', { key: 'series', default: () => [] })
+}
+
+export function useSeries(slug: string) {
+  return useFetch<Series>(`/api/content/series/${encodeURIComponent(slug)}`, { key: `series:${slug}` })
 }
 
 export interface TagCount extends Tag {
