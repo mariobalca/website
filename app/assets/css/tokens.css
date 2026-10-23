@@ -1,0 +1,87 @@
+/* Build log. Dark is the default; light follows the system unless the visitor picked one. */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --bg: #0f1115;
+  --surface: #171a20;
+  --surface-2: #1d2129;
+  --border: #252932;
+  --border-strong: #353a45;
+  --heading: #ffffff;
+  --text: #e8eaed;
+  --text-body: #dadde2;
+  --text-soft: #c3c8d0;
+  --muted: #9aa1ac;
+  --link: #f2b544;
+  --link-hover: #ffd27a;
+  --accent-fill: #f2b544;
+  --on-accent: #0f1115;
+  --accent-soft: #1a1710;
+  --accent-border: #5c4a22;
+  --mark-bg: #3d3216;
+  --mark-text: #ffd27a;
+  --code-bg: #0b0d10;
+  --code-text: #e8eaed;
+  --inline-code: #f2b544;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme='dark']) {
+    color-scheme: light;
+    --bg: #f7f8fa;
+    --surface: #ffffff;
+    --surface-2: #eef0f3;
+    --border: #dde1e7;
+    --border-strong: #c9ced6;
+    --heading: #14171c;
+    --text: #14171c;
+    --text-body: #2e333b;
+    --text-soft: #2e333b;
+    --muted: #5b6370;
+    --link: #8a5a00;
+    --link-hover: #6b4500;
+    --accent-fill: #f2b544;
+    --on-accent: #0f1115;
+    --accent-soft: #fff8e6;
+    --accent-border: #e8c77a;
+    --mark-bg: #fcebc2;
+    --mark-text: #14171c;
+    --code-bg: #14171c;
+    --code-text: #e8eaed;
+    --inline-code: #6b4500;
+  }
+}
+
+:root[data-theme='light'] {
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-2: #eef0f3;
+  --border: #dde1e7;
+  --border-strong: #c9ced6;
+  --heading: #14171c;
+  --text: #14171c;
+  --text-body: #2e333b;
+  --text-soft: #2e333b;
+  --muted: #5b6370;
+  --link: #8a5a00;
+  --link-hover: #6b4500;
+  --accent-fill: #f2b544;
+  --on-accent: #0f1115;
+  --accent-soft: #fff8e6;
+  --accent-border: #e8c77a;
+  --mark-bg: #fcebc2;
+  --mark-text: #14171c;
+  --code-bg: #14171c;
+  --code-text: #e8eaed;
+  --inline-code: #6b4500;
+}
+
+:root {
+  --font-sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --radius: 10px;
+  --page: 880px;
+  --reading: 720px;
+  --gutter: 24px;
+}

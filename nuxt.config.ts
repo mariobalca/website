@@ -3,10 +3,17 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/fonts'],
   devtools: { enabled: true },
 
+  css: ['~/assets/css/tokens.css', '~/assets/css/base.css', '~/assets/css/prose.css'],
+
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
       meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      // Applies a saved theme before first paint, so a light-theme visitor never sees a dark flash.
+      script: [{
+        innerHTML: 'try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}',
+        tagPosition: 'head',
+      }],
     },
   },
 
@@ -31,5 +38,14 @@ export default defineNuxtConfig({
 
   typescript: {
     strict: true,
+  },
+
+  $production: {
+    hooks: {
+      'pages:extend'(pages) {
+        const dev = pages.filter(page => page.path.startsWith('/dev'))
+        dev.forEach(page => pages.splice(pages.indexOf(page), 1))
+      },
+    },
   },
 })
