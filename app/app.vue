@@ -6,8 +6,14 @@ useHead({
   titleTemplate: title => (title ? `${title} · Mário Balça` : 'Mário Balça'),
   link: [
     { rel: 'alternate', type: 'application/rss+xml', title: 'Mário Balça', href: `${siteUrl}/rss.xml` },
-    { rel: 'canonical', href: () => `${siteUrl}${route.path === '/' ? '' : route.path}` },
   ],
+})
+
+// A draft has no canonical address; every other page is its own.
+useHead({
+  link: () => route.path.startsWith('/preview')
+    ? []
+    : [{ rel: 'canonical', href: `${siteUrl}${route.path === '/' ? '' : route.path}` }],
 })
 
 useSeoMeta({
