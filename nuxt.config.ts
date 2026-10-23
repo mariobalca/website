@@ -52,6 +52,9 @@ export default defineNuxtConfig({
 
   routeRules: {
     '/api/content/**': { prerender: false },
+    // Drafts are rendered on each request and must never be cached or indexed.
+    '/preview/**': { prerender: false, headers: { 'cache-control': 'private, no-store', 'x-robots-tag': 'noindex, nofollow' } },
+    '/api/preview': { prerender: false, headers: { 'cache-control': 'private, no-store', 'x-robots-tag': 'noindex, nofollow' } },
   },
 
   $production: {
