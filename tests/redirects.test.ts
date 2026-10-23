@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { toPostSummary } from '../server/utils/content'
-import { buildRedirects } from '../server/utils/redirects'
+import { buildRedirects, withoutTrailingSlash } from '../server/utils/redirects'
 import type { TamablePost } from '../shared/types/tamable'
 import posts from './fixtures/tamable/posts.json'
 
@@ -66,5 +66,23 @@ describe('the redirect map', () => {
     const map = buildRedirects({ posts: summaries, renamed: [{ from: '/blog/old', to: '/blog/product-based-companies-vs-service-based-companies' }] })
 
     for (const to of Object.values(map)) expect(map).not.toHaveProperty(to)
+  })
+})
+
+describe('dropping a trailing slash', () => {
+  it('drops it, and leaves addresses without one alone', () => {
+    expect(withoutTrailingSlash('/blog/')).toBe('/blog')
+    expect(withoutTrailingSlash('/blog/post//')).toBe('/blog/post')
+    expect(withoutTrailingSlash('/blog')).toBeNull()
+    expect(withoutTrailingSlash('/')).toBeNull()
+  })
+
+  it('never produces an address on another site', () => {
+    for (const path of ['//evil.example/', '///evil.example/', '/\\evil.example/', '//evil.example//x/']) {
+      const target = withoutTrailingSlash(path)!
+      expect(target.startsWith('/')).toBe(true)
+      expect(target.startsWith('//')).toBe(false)
+      expect(target.startsWith('/\\')).toBe(false)
+    }
   })
 })

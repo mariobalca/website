@@ -47,3 +47,13 @@ export function buildRedirects({ posts, renamed }: RedirectInput): Record<string
 function isLive(path: string, live: Set<string>): boolean {
   return live.has(path) || [...LIVE].some(root => root !== '/' && path.startsWith(`${root}/`) && !path.startsWith('/blog/'))
 }
+
+/**
+ * The address without its trailing slash, or null when it has none. Leading slashes and
+ * backslashes collapse to one, so `//evil.example/` can never become a redirect off the site.
+ */
+export function withoutTrailingSlash(pathname: string): string | null {
+  if (pathname.length <= 1 || !pathname.endsWith('/')) return null
+  const trimmed = `/${pathname.replace(/\/+$/, '').replace(/^[/\\]+/, '')}`
+  return trimmed === pathname ? null : trimmed
+}
