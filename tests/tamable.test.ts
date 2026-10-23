@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { createTamableClient, TamableError } from '../server/utils/tamable'
 import posts from './fixtures/tamable/posts.json'
-import post from './fixtures/tamable/post.json'
+import post from './fixtures/tamable/posts/product-based-companies-vs-service-based-companies.json'
 import series from './fixtures/tamable/series.json'
 import redirects from './fixtures/tamable/redirects.json'
 

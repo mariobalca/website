@@ -28,6 +28,8 @@ export interface PostSummary {
   updatedAt: string | null
   series: PostSeries | null
   tags: Tag[]
+  /** Null when only the list was read, since lists carry no body. */
+  readingMinutes: number | null
 }
 
 export interface Post extends PostSummary {
@@ -49,4 +51,18 @@ export interface SeriesSummary {
 
 export interface Series extends Omit<SeriesSummary, 'postCount'> {
   posts: PostSummary[]
+}
+
+export interface SeriesNav {
+  slug: string
+  title: string
+  number: number
+  total: number
+  previous: PostSummary | null
+  next: PostSummary | null
+}
+
+/** A post as its page needs it: with its place in a series, when it has one. */
+export interface PostPage extends Post {
+  seriesNav: SeriesNav | null
 }

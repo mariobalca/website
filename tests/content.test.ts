@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest'
-import { readingMinutes, redirectPaths, toPost, toPostSummary, toSeriesSummary } from '../server/utils/content'
+import { readingMinutes, redirectPaths, seriesNav, toPost, toPostSummary, toSeriesSummary } from '../server/utils/content'
 import { slugify } from '../shared/utils/slug'
 import type { TamablePost } from '../shared/types/tamable'
 import posts from './fixtures/tamable/posts.json'
-import post from './fixtures/tamable/post.json'
+import post from './fixtures/tamable/posts/product-based-companies-vs-service-based-companies.json'
 import series from './fixtures/tamable/series.json'
 
 describe('mapping Tamable to the site', () => {
@@ -50,7 +50,7 @@ describe('mapping Tamable to the site', () => {
   })
 
   it('maps series summaries', () => {
-    expect(toSeriesSummary(series.data[0]!)).toEqual({ slug: 'building-tamable', title: 'Building Tamable', description: 'Notes from building Tamable.', postCount: 2 })
+    expect(toSeriesSummary(series.data[0]!)).toEqual({ slug: 'building-tamable', title: 'Building Tamable', description: 'Notes from building Tamable.', postCount: 1 })
   })
 })
 
@@ -66,5 +66,22 @@ describe('Tamable redirects as site paths', () => {
       { from: 'https://mariobalca.com/blog/a', to: 'https://elsewhere.com/blog/a' },
       { from: 'https://mariobalca.com/blog/same/', to: 'https://mariobalca.com/blog/same' },
     ], 'https://mariobalca.com')).toEqual([])
+  })
+})
+
+describe('a post in its series', () => {
+  const part = (slug: string, number: number) => ({ ...toPostSummary(post.data as TamablePost), slug, path: `/blog/${slug}`, series: { slug: 's', title: 'S', number } })
+  const series = { slug: 's', title: 'S', description: null, posts: [part('one', 1), part('two', 2), part('four', 4)] }
+
+  it('links the published parts either side, keeping the number Tamable gave it', () => {
+    const nav = seriesNav(series, 'four')
+
+    expect(nav).toMatchObject({ slug: 's', title: 'S', number: 4, total: 3, next: null })
+    expect(nav?.previous?.slug).toBe('two')
+  })
+
+  it('has no previous part for the first one, and nothing for a post outside the series', () => {
+    expect(seriesNav(series, 'one')?.previous).toBeNull()
+    expect(seriesNav(series, 'elsewhere')).toBeNull()
   })
 })
