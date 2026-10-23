@@ -46,7 +46,7 @@ export default defineNuxtConfig({
       routes: ['/', '/blog'],
       failOnError: true,
       // Linked from the header; each goes once its page exists.
-      ignore: ['/series', '/about', '/mentorship'],
+      ignore: ['/about', '/mentorship'],
     },
   },
 

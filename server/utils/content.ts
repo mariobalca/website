@@ -1,4 +1,4 @@
-import type { Cover, Post, PostSummary, Series, SeriesSummary, Tag } from '../../shared/types/content'
+import type { Cover, Post, PostSummary, Series, SeriesNav, SeriesSummary, Tag } from '../../shared/types/content'
 import type { TamableCover, TamablePost, TamableRedirect, TamableSeries, TamableSeriesSummary } from '../../shared/types/tamable'
 import { slugify } from '../../shared/utils/slug'
 
@@ -61,6 +61,21 @@ export function toSeriesSummary(series: TamableSeriesSummary): SeriesSummary {
 
 export function toSeries(series: TamableSeries): Series {
   return { slug: series.slug, title: series.title, description: series.description, posts: series.posts.map(toPostSummary) }
+}
+
+/** Where a post sits in its series: published parts only, so the previous and next always exist on the site. */
+export function seriesNav(series: Series, slug: string): SeriesNav | null {
+  const index = series.posts.findIndex(post => post.slug === slug)
+  const post = series.posts[index]
+  if (!post?.series) return null
+  return {
+    slug: series.slug,
+    title: series.title,
+    number: post.series.number,
+    total: series.posts.length,
+    previous: series.posts[index - 1] ?? null,
+    next: series.posts[index + 1] ?? null,
+  }
 }
 
 export function readingMinutes(html: string): number {

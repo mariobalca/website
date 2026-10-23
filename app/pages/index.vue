@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { data: posts } = await usePosts()
+const { data: series } = await useSeriesList()
 const latest = computed(() => posts.value.slice(0, 5))
 
 useSeoMeta({
@@ -30,6 +31,15 @@ useSeoMeta({
       <NuxtLink to="/blog" class="all">
         all posts →
       </NuxtLink>
+    </section>
+
+    <section v-if="series.length" aria-labelledby="series" class="series">
+      <h2 id="series" class="prompt">
+        $ ls series
+      </h2>
+      <div class="cards">
+        <SeriesCard v-for="item in series" :key="item.slug" :series="item" />
+      </div>
     </section>
   </div>
 </template>
@@ -66,6 +76,21 @@ useSeoMeta({
 .latest .prompt {
   margin-bottom: 8px;
   font-weight: 500;
+}
+
+.series {
+  padding-bottom: 96px;
+}
+
+.series .prompt {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 
 .all {

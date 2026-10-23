@@ -8,13 +8,20 @@
     "cover": null,
     "published_at": "2024-10-08T09:00:00+00:00",
     "updated_at": "2024-10-08T11:13:33+00:00",
-    "series": null,
+    "series": {
+      "slug": "building-tamable",
+      "title": "Building Tamable",
+      "number": 1
+    },
     "seo": {
       "title": "My perspective/experience about the current state of the developer job market (Q4 2024)",
       "description": "Most companies don't need that 1% of the very best talent available.",
       "canonical_url": "https://mariobalca.com/blog/the-current-state-of-the-developer-job-market-q4-2024"
     },
-    "tags": ["Job Market", "Work"],
+    "tags": [
+      "Job Market",
+      "Work"
+    ],
     "html": "<p>Most companies don't need that 1% of the very best talent available.</p><h2 id=\"the-market\">The market</h2><p>A fixture body for builds without the real API.</p>",
     "content": null
   }
