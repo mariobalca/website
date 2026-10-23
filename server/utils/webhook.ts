@@ -2,7 +2,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto'
 
 /** Tamable re-signs each attempt with a fresh sent_at, so a real retry is never this old. */
 const MAX_AGE_MS = 10 * 60 * 1000
-const MAX_BODY_BYTES = 10_000
+export const MAX_BODY_BYTES = 10_000
 
 export function isFromTamable(rawBody: Buffer, header: string | undefined, secret: string): boolean {
   if (!secret || !header) return false
