@@ -27,12 +27,14 @@ createServer((request, response) => {
 
   const post = path.match(/^\/posts\/([^/]+)$/)
   const series = path.match(/^\/series\/([^/]+)$/)
+  const preview = path.match(/^\/preview\/(.+)$/)
   const body
     = path === '/posts' ? fixture('posts')
       : path === '/redirects' ? fixture('redirects')
         : path === '/series' ? fixture('series')
           : post ? fixture(`posts/${decodeURIComponent(post[1])}`)
             : series ? fixture(`series/${decodeURIComponent(series[1])}`)
+              : preview ? fixture(`preview/${decodeURIComponent(preview[1]).replace(/[^a-z0-9-]/gi, '_')}`)
               : null
 
   return body ? send(response, 200, body) : send(response, 404, { message: 'Not found.' })
