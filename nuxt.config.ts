@@ -47,13 +47,14 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/', '/blog', '/rss.xml', '/sitemap.xml'],
       failOnError: true,
-      // Linked from the header; each goes once its page exists.
-      ignore: ['/about', '/mentorship'],
     },
   },
 
   routeRules: {
     '/api/content/**': { prerender: false },
+    // Mentorship sessions are no longer offered; the old page points to the about page.
+    '/mentorship': { redirect: { to: '/about', statusCode: 301 } },
+    '/mentorship/': { redirect: { to: '/about', statusCode: 301 } },
     // Drafts are rendered on each request and must never be cached or indexed.
     '/preview/**': { prerender: false, headers: { 'cache-control': 'private, no-store', 'x-robots-tag': 'noindex, nofollow' } },
     '/api/preview': { prerender: false, headers: { 'cache-control': 'private, no-store', 'x-robots-tag': 'noindex, nofollow' } },
