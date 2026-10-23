@@ -28,6 +28,8 @@ export interface PostSummary {
   updatedAt: string | null
   series: PostSeries | null
   tags: Tag[]
+  /** Null when only the list was read, since lists carry no body. */
+  readingMinutes: number | null
 }
 
 export interface Post extends PostSummary {

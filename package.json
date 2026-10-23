@@ -12,7 +12,8 @@
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
     "typecheck": "nuxt typecheck",
-    "test": "vitest run"
+    "test": "vitest run",
+    "fake-tamable": "node scripts/fake-tamable.mjs"
   },
   "dependencies": {
     "@nuxt/fonts": "^1.1.0",

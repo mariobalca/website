@@ -3,7 +3,7 @@ import { readingMinutes, redirectPaths, toPost, toPostSummary, toSeriesSummary }
 import { slugify } from '../shared/utils/slug'
 import type { TamablePost } from '../shared/types/tamable'
 import posts from './fixtures/tamable/posts.json'
-import post from './fixtures/tamable/post.json'
+import post from './fixtures/tamable/posts/product-based-companies-vs-service-based-companies.json'
 import series from './fixtures/tamable/series.json'
 
 describe('mapping Tamable to the site', () => {

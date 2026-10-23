@@ -30,7 +30,14 @@ export function toPostSummary(post: TamablePost): PostSummary {
     updatedAt: post.updated_at,
     series: post.series,
     tags: post.tags.map(toTag),
+    readingMinutes: null,
   }
+}
+
+/** A full post as a list item, keeping its reading time. */
+export function summarize(post: Post): PostSummary {
+  const { html: _html, seo: _seo, ...summary } = post
+  return summary
 }
 
 export function toPost(post: TamablePost): Post {

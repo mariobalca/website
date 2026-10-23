@@ -29,4 +29,12 @@ jobs:
 
       - run: npm test
 
-      - run: npm run build
+      # CI never holds the read key: the build reads recorded fixtures from a fake Tamable.
+      - name: Build against the fake Tamable
+        run: |
+          npm run fake-tamable &
+          until curl -s -o /dev/null localhost:4010; do sleep 0.2; done
+          npm run build
+        env:
+          NUXT_TAMABLE_API_URL: http://localhost:4010/api/v1
+          NUXT_TAMABLE_READ_KEY: fixture

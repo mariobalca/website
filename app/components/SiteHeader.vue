@@ -82,4 +82,10 @@ function isCurrent(sections: string[]) {
 .nav-link.current {
   color: var(--link);
 }
+
+@media (max-width: 480px) {
+  .nav-link {
+    padding: 0 7px;
+  }
+}
 </style>

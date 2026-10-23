@@ -40,6 +40,20 @@ export default defineNuxtConfig({
     strict: true,
   },
 
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ['/', '/blog'],
+      failOnError: true,
+      // Linked from the header; each goes once its page exists.
+      ignore: ['/series', '/about', '/mentorship'],
+    },
+  },
+
+  routeRules: {
+    '/api/content/**': { prerender: false },
+  },
+
   $production: {
     hooks: {
       'pages:extend'(pages) {
