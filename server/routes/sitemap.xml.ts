@@ -1,7 +1,7 @@
 import { sitemapEntries, sitemapXml } from '../utils/feeds'
 
 // The site's own pages; posts, tags and series come from Tamable.
-const PAGES = ['/', '/blog', '/series']
+const PAGES = ['/', '/blog', '/series', '/about']
 
 export default defineEventHandler(async (event) => {
   assertBuildTime()
