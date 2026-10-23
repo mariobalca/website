@@ -41,7 +41,8 @@ export function createTamableClient(options: TamableClientOptions) {
   const retries = options.retries ?? 2
   const sleep = options.sleep ?? (ms => new Promise<void>(resolve => setTimeout(resolve, ms)))
 
-  async function request(path: string, redirect: RequestRedirect = 'follow'): Promise<Response> {
+  // `label` names the request in errors; a preview passes one without its token.
+  async function request(path: string, redirect: RequestRedirect = 'follow', label = path): Promise<Response> {
     if (!options.readKey) {
       throw new TamableError('No Tamable read key is set (NUXT_TAMABLE_READ_KEY).', null)
     }
@@ -60,7 +61,7 @@ export function createTamableClient(options: TamableClientOptions) {
           await sleep(backoff(attempt))
           continue
         }
-        throw new TamableError(`Tamable didn't answer ${path}: ${(error as Error).message}`, null)
+        throw new TamableError(`Tamable didn't answer ${label}: ${(error as Error).message}`, null)
       }
 
       if ((response.status === 429 || response.status >= 500) && attempt < retries) {
@@ -134,7 +135,7 @@ export function createTamableClient(options: TamableClientOptions) {
     /** A draft through a preview link, or null once the link expired or belongs to another site. */
     async preview(token: string): Promise<TamablePost | null> {
       const path = `/preview/${encodeURIComponent(token)}`
-      const response = await request(path)
+      const response = await request(path, 'follow', '/preview')
       if (response.status === 404) return null
       if (!response.ok) throw new TamableError(`Tamable answered ${response.status} for the preview.`, response.status)
       return (await response.json() as { data: TamablePost }).data

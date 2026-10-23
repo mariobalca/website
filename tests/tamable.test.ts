@@ -138,6 +138,16 @@ describe('Tamable client', () => {
     expect(calls).toHaveLength(3)
   })
 
+  it('keeps a preview token out of error messages', async () => {
+    const { tamable } = client(() => {
+      throw new TypeError('fetch failed')
+    })
+
+    const error = await tamable.preview('secret-token').catch(e => e)
+
+    expect(error.message).toBe("Tamable didn't answer /preview: fetch failed")
+  })
+
   it('fails on a 401 without retrying', async () => {
     const { tamable, calls } = client(() => json({ message: 'A valid site key is required.' }, 401))
 
