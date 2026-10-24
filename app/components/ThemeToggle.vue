@@ -56,25 +56,26 @@ function toggle() {
   border-color: var(--border-strong);
 }
 
-/* The icon shows the theme a click switches to, decided by CSS so it is right before hydration. */
+/* The icon shows the theme a click switches to, decided by CSS so it is right before hydration.
+   Whole selectors go in :global(), since Vue drops whatever follows a :global() part. */
 .moon {
   display: none;
 }
 
-:global(:root[data-theme='light']) .sun {
+:global(:root[data-theme='light'] .theme-toggle .sun) {
   display: none;
 }
 
-:global(:root[data-theme='light']) .moon {
+:global(:root[data-theme='light'] .theme-toggle .moon) {
   display: block;
 }
 
 @media (prefers-color-scheme: light) {
-  :global(:root:not([data-theme='dark'])) .sun {
+  :global(:root:not([data-theme='dark']) .theme-toggle .sun) {
     display: none;
   }
 
-  :global(:root:not([data-theme='dark'])) .moon {
+  :global(:root:not([data-theme='dark']) .theme-toggle .moon) {
     display: block;
   }
 }
