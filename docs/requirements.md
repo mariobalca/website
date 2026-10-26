@@ -56,12 +56,13 @@ Nuxt reads `NUXT_*` variables into its server-only runtime config when the build
 | `/` | Intro and latest posts | |
 | `/blog` | `GET /posts`, every page | Paginated if it grows past one page |
 | `/blog/{slug}` | `GET /posts/{slug}` | Prerendered for every post |
+| `/tags/{tag}` | Same data as `/blog` | The blog listing filtered to one tag. `{tag}` is the tag name as a slug (`Job Market` is `job-market`) |
 | `/series` | `GET /series` | Only series with published posts |
 | `/series/{slug}` | `GET /series/{slug}` | Posts in order, with their numbers |
 | `/about` | `app/pages/about.vue` | Moved from Ghost, verbatim apart from the dropped newsletter mention and a shorter Tamable sentence |
 | `/preview/{token}` | `GET /preview/{token}` | Server-rendered on each request, see Preview |
 | `/rss.xml` | Same data as `/blog` | Full content, newest 20 |
-| `/sitemap.xml` | Same data | Pages, posts and series, with `lastmod` from `updated_at` |
+| `/sitemap.xml` | Same data | Pages, posts, tags and series, with `lastmod` from `updated_at` |
 | `/robots.txt` | Static | Disallows `/preview/` and `/api/` |
 | `/api/deploy` | Tamable webhook | `POST` only |
 | Anything else | | Custom 404 page with a 404 status |
@@ -75,7 +76,7 @@ All are permanent (301). They are generated at build time, so a build is the onl
 | `https://www.mariobalca.com/*` | `https://mariobalca.com/*` | Canonical host, in nginx |
 | `/{slug}/` for each post | `/blog/{slug}` | Ghost's post URLs |
 | `/rss/` | `/rss.xml` | Ghost's feed URL, so feed readers follow |
-| `/tag/{tag}/` | `/blog` | Ghost tag archives. The site has no tag pages |
+| `/tag/{tag}/` | `/tags/{tag}` | Ghost tag archives, for tags that still have posts |
 | `/author/mariobalca/` | `/about` | Ghost author page |
 | `/mentorship` | `/about` | Mentorship sessions are no longer offered |
 | Every `{from, to}` in `GET /redirects` | its `to` | Posts renamed in Tamable |
@@ -93,7 +94,7 @@ Trailing slashes are normalised to no slash. The read API's `301` also sends a `
 - **Headings** carry ids from Tamable, so posts get anchor links and, optionally, a table of contents.
 - **Links**: Tamable already serves own-site links without `target` or `rel`, and other sites with `target="_blank" rel="noopener"`.
 - **Cover image**: shown when set, with its `width` and `height` to avoid layout shift and its `description` as alt text.
-- **Meta**: date, reading time (computed from the HTML), tags as plain labels, and the series with its number and links to the previous and next parts.
+- **Meta**: date, reading time (computed from the HTML), tags linking to their tag pages, and the series with its number and links to the previous and next parts.
 
 ## SEO
 
@@ -230,7 +231,6 @@ The chosen direction becomes the site's tokens and components: type, colour, spa
 ## Out of scope for now
 
 - Newsletter and members
-- Tag pages: tags show on posts as plain labels, and Ghost's `/tag/{tag}/` URLs redirect to `/blog`
 - Search
 - Analytics
 - Image resizing: images are served as Tamable stores them, with their `width` and `height` and `loading="lazy"` below the fold
