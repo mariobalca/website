@@ -222,9 +222,10 @@ The chosen direction becomes the site's tokens and components: type, colour, spa
 | tamable-app/tamable#72 | Preview URL patterns save with their placeholders, and the blog URL pattern must be a path | Merged |
 | tamable-app/tamable#73 | Links to the site itself have no `target` or `nofollow` | Merged |
 | tamable-app/tamable#74 | Rebuilds on deletes, series, tags and URL pattern changes, with a sliding debounce | Merged |
-| tamable-app/tamable#75 | Ghost imports are live as published, keep their dates and SEO title, and rebuild the site | Open |
-| tamable-app/tamable#76 | Headings carry ids | Open |
-| tamable-app/tamable#77 | The read API guide matches the code | Open |
+| tamable-app/tamable#75 | Ghost imports are live as published, keep their dates and SEO title, and rebuild the site | Merged |
+| tamable-app/tamable#76 | Headings carry ids | Merged |
+| tamable-app/tamable#77 | The read API guide matches the code | Merged |
+| tamable-app/tamable#78 | Runs on `main` deploy everything since the last good run, so merges close together can't skip a deploy | Merged |
 
 ## Out of scope for now
 
