@@ -38,3 +38,24 @@ jobs:
         env:
           NUXT_TAMABLE_API_URL: http://localhost:4010/api/v1
           NUXT_TAMABLE_READ_KEY: fixture
+
+  # Deploys only from main, and only once every check above has passed.
+  # Forge's push to deploy stays off, so untested code never goes live.
+  deploy:
+    name: Deploy to Forge
+    needs: check
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://mariobalca.com
+    steps:
+      - name: Call the Forge deploy hook
+        run: |
+          if [ -z "$FORGE_DEPLOY_HOOK_URL" ]; then
+            echo "::warning::FORGE_DEPLOY_HOOK_URL is not set, so nothing was deployed."
+            exit 0
+          fi
+          curl --fail-with-body --silent --show-error --max-time 30 -X POST "$FORGE_DEPLOY_HOOK_URL"
+        env:
+          FORGE_DEPLOY_HOOK_URL: ${{ secrets.FORGE_DEPLOY_HOOK_URL }}

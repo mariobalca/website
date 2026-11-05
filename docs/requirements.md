@@ -136,6 +136,7 @@ Tamable already waits until changes settle (60 seconds after the last one, at mo
 
 - **On every pull request**, GitHub Actions runs lint, type check, unit tests, and a full build against recorded API fixtures, then crawls the built site for broken links and redirects.
 - **On `main`**, once those pass, the workflow calls the Forge deploy hook. Forge's push to deploy stays off, so untested code never deploys.
+- The hook URL is the `FORGE_DEPLOY_HOOK_URL` repository secret. Without it, the deploy job skips with a warning instead of failing.
 
 ### Forge deploy script
 
